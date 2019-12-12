@@ -22,5 +22,3 @@ COPY simple-test1.jmx ./Tests/
 COPY simple-test2.jmx ./Tests/
 COPY simple-test3.jmx ./Tests/
 RUN chmod +x ./run.sh
-
-ENTRYPOINT ./run.sh
