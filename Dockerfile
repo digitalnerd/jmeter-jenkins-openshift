@@ -3,9 +3,8 @@ FROM java:8
 ARG JMETER_VER="5.2"
 
 ENV JMETER_HOME /jmeter/apache-jmeter-$JMETER_VER
+# Add Jmeter to the Path
 ENV PATH $JMETER_HOME/bin:$PATH
-
-WORKDIR $JMETER_HOME
 
 RUN mkdir /jmeter \
     && cd /jmeter \
@@ -14,7 +13,7 @@ RUN mkdir /jmeter \
     && rm apache-jmeter-$JMETER_VER.tgz \
     && sed -i s/#server.rmi.ssl.disable=false/server.rmi.ssl.disable=true/ $JMETER_HOME/bin/jmeter.properties
 
-# Add Jmeter to the Path
+WORKDIR $JMETER_HOME
 
 EXPOSE 60000
 
